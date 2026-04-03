@@ -1,15 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Especialistas em climatização e ar-condicionado. Instalação, manutenção e limpeza para residências, comércios e indústrias com alta qualidade." />
+  <meta name="author" content="Panda Ar-Condicionado" />
+  <meta name="robots" content="index, follow" />
+
+  <title>Panda Ar-Condicionado</title>
+
+  <!-- Estilos e fontes -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="imagens/icone.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+  <meta name="theme-color" content="#004d99" />
+
+  <!-- Open Graph para redes sociais -->
+  <meta property="og:title" content="Panda Ar-Condicionado - Climatização Profissional" />
+  <meta property="og:description"
+    content="Conforto térmico com qualidade e segurança. Serviços de instalação e manutenção." />
+  <meta property="og:image" content="https://www.dominioficticio.com/imagens/icone.png" />
+  <meta property="og:url" content="https://www.dominioficticio.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init({ publicKey: "SjY-Kvaum5bYczReC" });
+    })();
+  </script>
 </head>
 
+
 <body>
-  Hello world
+  <canvas id="particles-bg"></canvas>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="imagens/icone.png" alt="Logo da empresa" class="logo" />
+      </div>
+      <h1>Panda Ar-Condicionado</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <h2>Sobre Nós</h2>
+      <p>
+        Somos especialistas em climatização para ambientes residenciais, comerciais e industriais. Atuamos com
+        excelência na instalação, manutenção e higienização de sistemas, seguindo rigor técnico, normas de segurança e
+        foco em eficiência energética. Oferecemos soluções personalizadas que garantem conforto térmico, confiabilidade
+        e alta performance.
+      </p>
+    </section>
+
+    <section class="equipe">
+      <div class="fotos-equipe">
+        <img src="imagens/sobre.jpg" alt="Profissional 1" class="destaque" />
+
+      </div>
+    </section>
+
+    <section id="servicos">
+      <h2>Nossos Serviços</h2>
+      <div class="servicos-container">
+        <div class="servico-box">
+          <img src="imagens/instalacao.png" alt="Ícone Instalação" class="servico-icon" />
+          <h3>Instalação de Ar Condicionado</h3>
+          <p>Instalações de equipamentos conforme recomendações do fabricante, normas ambientais e segurança.</p>
+        </div>
+
+        <div class="servico-box">
+          <img src="imagens/limpeza.png" alt="Ícone Limpeza" class="servico-icon" />
+          <h3>Limpeza e Higienização</h3>
+          <p>A preventiva periódica garante maior tempo de uso e ambiente limpo. Evite fungos, bactérias e vírus.</p>
+        </div>
+
+        <div class="servico-box">
+          <img src="imagens/manutencao.png" alt="Ícone Manutenção" class="servico-icon" />
+          <h3>Manutenção Corretiva</h3>
+          <p>Corrigimos falhas e prevenimos danos maiores. Garantia de funcionamento adequado do equipamento.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="projetos">
+      <h2>Projetos realizados</h2>
+      <div class="galeria">
+        <img src="imagens/projeto1.jpg" alt="split" />
+        <img src="imagens/projeto2.jpg" alt="K7" />
+        <img src="imagens/projeto3.jpg" alt="Piso teto" />
+      </div>
+    </section>
+
+    <section id="video-local">
+      <h2>Qualidade em Cada Projeto</h2>
+      <video controls class="video-ajustado" poster="imagens/capa-video.jpg">
+        <source src="videos/video.mp4" type="video/mp4" />
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+    </section>
+
+    <section id="contato">
+      <h2>Fale Conosco</h2>
+      <p>Entre em contato para um atendimento rápido:</p>
+      <p class="contato-links">
+        <a href="https://wa.me/11949254315" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <!-- Ícone WhatsApp SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#25D366" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false">
+            <path
+              d="M20.52 3.48A11.936 11.936 0 0012 0C5.372 0 .03 5.343 0 12c0 2.11.55 4.14 1.6 5.97L0 24l6.26-1.62A11.88 11.88 0 0012 24c6.627 0 12-5.373 12-12a11.92 11.92 0 00-3.48-8.52zM12 21.77c-1.89 0-3.71-.52-5.28-1.5l-.38-.23-3.7.96.98-3.6-.24-.37a8.473 8.473 0 01-1.44-4.96c.02-4.69 3.82-8.5 8.52-8.5 2.27 0 4.4.88 6 2.48a8.403 8.403 0 012.52 6c0 4.7-3.83 8.5-8.52 8.5zm4.87-6.62l-2.24-.64c-.3-.09-.62-.05-.87.11-.47.28-.96.55-1.46.77a.508.508 0 01-.46 0l-1.47-.87a6.81 6.81 0 01-2.56-2.57l-.87-1.46c-.09-.15-.11-.34-.05-.52.05-.17.19-.32.36-.39l1.33-.53c.25-.1.37-.4.28-.65l-.62-2.23a.52.52 0 00-.54-.39c-.15 0-.3.07-.39.19-.7.9-1.07 2.02-1.07 3.19 0 2.54 2.04 4.6 4.57 4.6 1.19 0 2.32-.44 3.16-1.25a.53.53 0 00.02-.74z" />
+          </svg>
+          WhatsApp
+        </a>
+        |
+        <a href="https://www.instagram.com/panda_arcondicionado" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram">
+          <!-- Ícone Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#E4405F" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false">
+            <path
+              d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
+          </svg>
+          Instagram
+        </a>
+      </p>
+
+      <form id="contato-form" onsubmit="enviarEmailJS(event)" novalidate>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Sua mensagem" required></textarea>
+
+        <button type="submit">Enviar Mensagem</button>
+        <p id="form-feedback" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Panda Ar-condicionado. Todos os direitos reservados.</p>
+  </footer>
+
+  <button id="toggle-dark-mode" aria-label="Alternar modo escuro">🌙 Modo Escuro</button>
+
   <script src="script.js"></script>
 </body>
 
