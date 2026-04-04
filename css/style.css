@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Roboto', 'Segoe UI', sans-serif;
   background-color: #f0f0f5;
@@ -67,6 +68,7 @@ nav ul {
   gap: 20px;
   flex-wrap: wrap;
 }
+
 nav a {
   color: white;
   text-decoration: none;
@@ -75,6 +77,7 @@ nav a {
   border-radius: 5px;
   transition: background 0.3s;
 }
+
 nav a:hover,
 nav a:focus {
   background-color: #0066cc;
@@ -95,6 +98,7 @@ section h2 {
   font-size: 2rem;
   margin-bottom: 20px;
 }
+
 section p {
   text-align: center;
 }
@@ -316,6 +320,7 @@ section p {
   min-height: 1.5em;
   user-select: none;
 }
+
 #form-feedback.error {
   color: #cc0000;
 }
@@ -341,6 +346,7 @@ section p {
   align-items: center;
   justify-content: center;
 }
+
 #toggle-dark-mode:hover,
 #toggle-dark-mode:focus {
   background-color: #0077cc;
@@ -352,50 +358,62 @@ body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
 }
+
 body.dark-mode header {
   background-color: rgba(0, 31, 63, 0.85);
   color: #a8caff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.75);
 }
+
 body.dark-mode footer {
   background-color: #222;
   color: #888;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.75);
 }
+
 body.dark-mode nav a {
   color: #a8caff;
 }
+
 body.dark-mode nav a:hover,
 body.dark-mode nav a:focus {
   background-color: #004080;
 }
+
 body.dark-mode #contato form {
   background: #1e1e1e;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.75);
 }
+
 body.dark-mode #contato form label {
   color: #a8caff;
 }
+
 body.dark-mode #contato form input,
 body.dark-mode #contato form textarea {
   background: #121212;
   color: #e0e0e0;
   border-color: #0077cc;
 }
+
 body.dark-mode #contato form input:focus,
 body.dark-mode #contato form textarea:focus {
   box-shadow: 0 0 8px #0099ff;
 }
+
 body.dark-mode #contato form button {
   background-color: #0066cc;
 }
+
 body.dark-mode #contato form button:hover,
 body.dark-mode #contato form button:focus {
   background-color: #0099ff;
 }
+
 body.dark-mode .contato-links a {
   color: #70b8ff;
 }
+
 body.dark-mode .contato-links a:hover,
 body.dark-mode .contato-links a:focus {
   color: #a8d1ff;
