@@ -92,4 +92,60 @@ function enviarEmailJS(event) {
       feedback.textContent = "❌ Erro ao enviar. Tente novamente.";
       feedback.classList.add("error");
     });
+
+
 }
+  
+const galeria = document.querySelector(".carousel .galeria");
+const items = document.querySelectorAll(".carousel .item");
+
+let index = 0;
+let isTransitioning = false;
+
+// 🔥 CLONA OS PRIMEIROS ELEMENTOS
+const clones = [];
+items.forEach(item => {
+  const clone = item.cloneNode(true);
+  galeria.appendChild(clone);
+  clones.push(clone);
+});
+
+const allItems = document.querySelectorAll(".carousel .item");
+
+function updateCarousel(animate = true) {
+  const itemWidth = galeria.parentElement.getBoundingClientRect().width;
+
+  if (!animate) {
+    galeria.style.transition = "none";
+  } else {
+    galeria.style.transition = "transform 0.5s ease";
+  }
+
+  galeria.style.transform = `translateX(-${index * itemWidth}px)`;
+}
+
+// 🔁 LOOP AUTOMÁTICO
+setInterval(() => {
+  if (isTransitioning) return;
+
+  index++;
+  updateCarousel(true);
+
+  // Quando chega no final "fake"
+  if (index === items.length) {
+    isTransitioning = true;
+
+    setTimeout(() => {
+      index = 0;
+      updateCarousel(false); // volta sem animação
+      isTransitioning = false;
+    }, 500); // tempo igual ao transition
+  }
+}, 3000);
+
+// Atualiza ao redimensionar
+window.addEventListener("resize", () => {
+  updateCarousel(false);
+});
+
+updateCarousel();
