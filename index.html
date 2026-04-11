@@ -3,78 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panda Ar</title>
-
+  <title>Panda Ar Condicionado</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- PARTICLES -->
-<canvas id="particles"></canvas>
 
-<!-- HEADER -->
+
 <header class="header">
-   <nav class="menu">
+ <div class="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+  <nav class="menu">
     <a href="#inicio">Início</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#projetos">Projetos</a>
+    <a href="#sobre">Quem Somos</a>
+    <a href="#servicos">O que fazemos</a>
+    <a href="#numeros">Números</a>
+    <a href="#empresas">Empresas</a>
+    <a href="#depoimentos">Depoimentos</a>
     <a href="#contato">Contato</a>
   </nav>
-
-  <a href="#" class="btn">Orçamento</a>
 </header>
 
 <!-- HERO -->
 <section id="inicio" class="hero">
-  <div class="hero-content">
-
-    <img src="img/logo.png" class="hero-logo">
-
-    <h1>O CALOR CHEGOU!</h1>
-    <p>O CONFORTO TAMBÉM PODE CHEGAR</p>
-
-    <a href="#" class="btn-whatsapp">Chame no WhatsApp</a>
+  <div class="hero-container">
+    <div class="hero-left reveal-left">
+      <img src="img/logo.png" class="hero-logo" alt="Logo Panda Ar">
+      <h1>Instalação, Limpeza e Manutenção de Ar-Condicionado com Atendimento Profissional</h1>
+      <ul class="hero-list">
+        <li>✔ Limpeza Técnica</li>
+        <li>✔ Instalação Profissional</li>
+        <li>✔ Manutenção e Reparos</li>
+        <li>✔ Agendamento Rápido</li>
+      </ul>
+      <a href="#" class="btn-whatsapp">Fale no WhatsApp</a>
+    </div>
+  
   </div>
 </section>
 
-<!-- BENEFÍCIOS -->
-<section class="beneficios reveal">
-  <p>✔ +13 anos de experiência</p>
-  <p>✔ Atendimento rápido</p>
-  <p>✔ Garantia em todos serviços</p>
+
+
+<!-- SOBRE -->
+<section id="sobre" class="sobre reveal">
+  <h2>Sobre a Panda Ar Condicionado</h2>
+  <p>Somos uma empresa com 12 anos de experiência em instalação, limpeza, manutenção e reparos de ar-condicionado. Atendemos residências, comércios e escritórios em toda a região com profissionalismo, agilidade e compromisso com a satisfação do cliente.</p>
+  <ul class="sobre-list">
+    <li>Equipe técnica certificada</li>
+    <li>Atendimento residencial e comercial</li>
+    <li>Peças originais e garantia no serviço</li>
+  </ul>
 </section>
 
 <!-- SERVIÇOS -->
-<section id="servicos" class="servicos">
-  <h2 class="reveal">NOSSOS SERVIÇOS</h2>
-
+<section id="servicos" class="servicos reveal">
+  <h2>Nossos Serviços</h2>
+  <p>Soluções completas para que seu ar-condicionado funcione com máxima eficiência, segurança e economia de energia.</p>
   <div class="grid">
-    <div class="servico reveal">
-      <img src="img/instalacao.png" alt="Instalação">
-      <span>Instalação</span>
-      <p>Atendimento profissional seguindo normas técnicas.</p>
-    </div>
-    <div class="servico reveal">
+    <div class="servico">
       <img src="img/limpeza.png" alt="Limpeza">
-      <span>Limpeza</span>
-      <a>Elimine fungos e aumente a vida útil.</a>
+      <span>Limpeza Técnica</span>
+      <p>Remoção de fungos, bactérias e sujeira acumulada. Melhora o desempenho do aparelho e a qualidade do ar que você respira.</p>
     </div>
-    <div class="servico reveal">
+    <div class="servico">
+      <img src="img/instalacao.png" alt="Instalação">
+      <span>Instalação Profissional</span>
+      <p>Instalação correta desde o início, evitando problemas futuros e garantindo máxima eficiência energética do equipamento.</p>
+    </div>
+    <div class="servico">
       <img src="img/manutencao.png" alt="Manutenção">
-      <span>Manutenção</span>
-      <a>Correção rapida e preventiva.</a>
+      <span>Manutenção Preventiva e Corretiva</span>
+      <p>Revisões periódicas que prolongam a vida útil do aparelho e evitam paradas inesperadas nos momentos mais quentes.</p>
     </div>
-    <div class="servico reveal">
-      <img src="img/instalacao.png" alt="PMOC">
-      <span>PMOC</span>
-      <a>Plano manutencão, operação e controle.</a>
+    <div class="servico">
+      <img src="img/reparos.png" alt="Reparos">
+      <span>Reparos Especializados</span>
+      <p>Solução rápida para falhas, vazamentos, ruídos e qualquer problema de funcionamento. Diagnóstico preciso e reparo garantido.</p>
     </div>
   </div>
 </section>
 
+<!-- NÚMEROS -->
+<section id="numeros" class="numeros reveal">
+  <h2>Experiência que Gera Confiança</h2>
+  <p>Uma trajetória de mais de uma década construída sobre resultados reais e clientes satisfeitos.</p>
+  <div class="numeros-grid">
+    <div class="numero"><h3>12</h3><p>Anos no Mercado</p></div>
+    <div class="numero"><h3>5K+</h3><p>Clientes Atendidos</p></div>
+    <div class="numero"><h3>98%</h3><p>Satisfação dos Clientes</p></div>
+    <div class="numero"><h3>24h</h3><p>Tempo de Resposta</p></div>
+  </div>
+</section>
 
-<!-- BOTÃO FLUTUANTE -->
-<a href="#" class="whatsapp-float"></a>
+<!-- EMPRESAS -->
+<section id="empresas" class="empresas reveal">
+  <h2>Empresas que Confiam no Nosso Trabalho</h2>
+  <p>Atendemos desde residências até grandes empresas. Conheça alguns dos parceiros que escolheram a Panda Ar Condicionado.</p>
+  <div class="carrossel">
+    <img src="img/empresa1.png" alt="Empresa 1">
+    <img src="img/empresa2.png" alt="Empresa 2">
+    <img src="img/empresa3.png" alt="Empresa 3">
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="depoimentos reveal">
+  <h2>O que Nossos Clientes Dizem</h2>
+  <p>A opinião de quem já confiou na Panda Ar Condicionado é o nosso maior reconhecimento.</p>
+  <div class="depoimentos-grid">
+    <div class="depoimento">⭐⭐⭐⭐⭐ Ana Paula S.<br>"Serviço impecável! O técnico chegou no horário, foi muito educado e deixou tudo limpinho. Meu ar nunca funcionou tão bem. Com certeza vou chamar novamente!"</div>
+    <div class="depoimento">⭐⭐⭐⭐⭐ Carlos Eduardo M.<br>"Contratei para instalação de dois aparelhos no escritório. Trabalho rápido, organizado e com ótimo preço. Recomendo sem hesitar para qualquer empresa."</div>
+    <div class="depoimento">⭐⭐⭐⭐⭐ Fernanda Lima<br>"Meu ar estava vazando há semanas. Chamei a Panda e em menos de 24 horas o problema estava resolvido. Atendimento excelente do início ao fim!"</div>
+  </div>
+  <div class="graficos">
+    <div class="grafico">98%<br>Clientes Satisfeitos</div>
+    <div class="grafico">95%<br>Retornam para Novo Serviço</div>
+    <div class="grafico">97%<br>Indicam para Amigos</div>
+  </div>
+</section>
+
+<!-- CHAMADA FINAL -->
+<section id="contato" class="contato reveal">
+  <h2>Agende Sua Visita Agora</h2>
+  <p>Não espere o calor chegar ou o aparelho falhar. Entre em contato com a Panda Ar Condicionado e garanta conforto, eficiência e tranquilidade para sua casa ou empresa.</p>
+  <ul class="contato-list">
+    <li>📞 Atendimento Rápido — Resposta em até 24 horas</li>
+    <li>💰 Orçamento Grátis — Sem compromisso</li>
+    <li>✅ Serviço com Garantia — Qualidade assegurada</li>
+  </ul>
+  <a href="#" class="btn">Agendar uma Visita</a>
+</section>
 
 <script src="js/script.js"></script>
 </body>
