@@ -77,31 +77,50 @@ body { font-family: Arial, sans-serif; background: #0A2540; color: white; }
 .btn-whatsapp:hover { box-shadow: 0 0 20px #25D366; transform: scale(1.05); }
 
 /* HERO */
+
 .hero {
+  position: relative;
   height: 80vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
-  background: linear-gradient(-45deg, #0A2540, #1e3a8a, #0ea5e9, #020617);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../img/fundo.hero.profissional.jpeg") no-repeat center center fixed;
+  background-size: cover;
   margin-top: 0; padding-top: 20px;
   gap: 10px;
 }
+
+
+
+.hero > * {
+  position: relative;
+  z-index: 2; /* garante que o texto fique acima da camada */
+}
+
+
 .hero-logo {
   width: 300px; max-width: 90%;
   margin-bottom: 0; opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(40px); 
+  
 }
+
+.hero-logo {
+  filter: contrast(1.2)
+          drop-shadow(0 0 5px rgba(255,255,255,0.4));
+}
+
+
+
 .hero.active .hero-logo {
-  animation: fadeUp 1s ease forwards, float 5s ease-in-out infinite;
+  animation: fadeUp 1s ease forwards, float 4.5s ease-in-out infinite;
   animation-delay: 0.2s, 1.2s;
 }
 .hero h1, .hero .hero-list, .hero .btn-whatsapp {
   opacity: 0; transform: translateY(40px);
 }
 .hero h1 {
-  font-size: 1.4rem; line-height: 1.3;
+  font-size: 1.7rem; line-height: 1.3;
   margin-top: 0; transform: translateY(40px);
   position: relative;
   background: linear-gradient(120deg,#fff 0%,#fff 40%,rgba(255,255,255,0.6) 50%,#fff 60%,#fff 100%);
@@ -115,8 +134,34 @@ body { font-family: Arial, sans-serif; background: #0A2540; color: white; }
   animation: fadeUp 1s ease forwards, pulseScale 2.5s ease-in-out infinite;
   animation-delay: 0.8s, 1.2s;
 }
-.hero-list { list-style: none; margin: 20px 0; }
-.hero-list li { margin: 5px 0; }
+.hero-list {
+  list-style: none;   /* remove os bullets */
+  padding: 0;         /* remove recuo interno */
+  margin: 20px auto;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.hero-list li {
+  margin: 0;
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .hero-list {
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .hero-list {
+    grid-template-columns: 1fr; /* 1 coluna */
+  }
+}
+
 
 /* Reflexo diagonal */
 h1 { position: relative; font-size: 2rem; color: #fff; overflow: hidden; }
@@ -155,9 +200,52 @@ h1::after {
   .about-right p { text-align: left; margin: 0 auto; }
 }
 
-/* SOBRE */
-.sobre.reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease; }
-.sobre.reveal.animate { opacity: 1; transform: translateY(0); }
+#sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* duas colunas */
+  gap: 40px;
+  align-items: start;
+  padding: 60px 20px;
+}
+
+#sobre h2 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+#sobre p {
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.sobre-list {
+  list-style: none;
+  padding: 0;
+}
+
+.sobre-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.sobre-list li::before {
+  content: "✔"; /* pode trocar por ícone via font-awesome ou svg */
+  margin-right: 10px;
+  color: #0077b6; /* cor de destaque */
+  font-weight: bold;
+}
+
+.sobre-list li i {
+  margin-right: 8px;
+  color: #0077b6; /* cor de destaque */
+}
 
 /* SERVIÇOS */
 .servicos.reveal .servico { opacity: 0; transform: scale(0.9); transition: all 0.8s ease; }
@@ -177,6 +265,31 @@ h1::after {
 .servicos.reveal.animate .servico:nth-child(2) { transition-delay: 0.4s; }
 .servicos.reveal.animate .servico:nth-child(3) { transition-delay: 0.6s; }
 .servicos.reveal.animate .servico:nth-child(4) { transition-delay: 0.8s; }
+
+.sobre-list-wrapper {
+  text-align: center; /* centraliza tudo */
+  flex-direction: column;
+  align-items: center;
+}
+
+.sobre-list-wrapper .icon {
+  display: block;
+  margin-bottom: 20px; /* espaço entre ícone e lista */
+}
+
+.sobre-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.sobre-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #fff;
+}
 
 /* NÚMEROS */
 .numeros.reveal .numero {
@@ -343,9 +456,9 @@ section { padding: 60px 20px; text-align: center; }
   100%{background-position:0% 50%}
 }
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(20px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0.5px); }
+  50% { transform: translateY(25px); }
+  100% { transform: translateY(0.5px); }
 }
 @keyframes pulseScale {
   0% { transform: scale(1); }
@@ -373,11 +486,6 @@ section { padding: 60px 20px; text-align: center; }
   100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
 }
 /* Fundo único com imagem */
-body {
-  background: url("../img/fundo-panda.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
 
 .sobre, .servicos, .numeros, .empresas, .depoimentos, .contato {
   background: rgba(255, 255, 255, 0.1); /* leve transparência */

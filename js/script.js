@@ -24,12 +24,12 @@ window.addEventListener('scroll', revealOnScroll);
 revealOnScroll(); // executa uma vez ao carregar
 
 // PARALLAX HERO (movimento do fundo ao rolar)
-window.addEventListener('scroll', () => {
+/*window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   if (hero) {
     hero.style.backgroundPositionY = window.scrollY * 0.3 + "px";
   }
-});
+});*/
 
 // Toggle menu responsivo
 document.addEventListener('DOMContentLoaded', () => {
