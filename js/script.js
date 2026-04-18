@@ -123,3 +123,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const ventos = document.querySelectorAll(".vento");
+  setInterval(() => {
+    ventos.forEach(v => {
+      const deslocamento = Math.random() * 20 - 10; // -10px a +10px
+      const opacidade = 0.2 + Math.random() * 0.4; // entre 0.2 e 0.6
+      v.style.transform = `translateX(${deslocamento}px) translateY(20px)`;
+      v.style.opacity = opacidade;
+    });
+  }, 2000);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".particulas");
+
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement("span");
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDelay = Math.random() * 6 + "s";
+    p.style.animationDuration = 4 + Math.random() * 4 + "s";
+    container.appendChild(p);
+  }
+});
+
+
