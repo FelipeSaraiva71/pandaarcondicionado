@@ -23,14 +23,6 @@ function revealOnScroll() {
 window.addEventListener('scroll', revealOnScroll);
 revealOnScroll(); // executa uma vez ao carregar
 
-// PARALLAX HERO (movimento do fundo ao rolar)
-/*window.addEventListener('scroll', () => {
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    hero.style.backgroundPositionY = window.scrollY * 0.3 + "px";
-  }
-});*/
-
 // Toggle menu responsivo
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
@@ -44,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Observer para revelar seções
 document.addEventListener("DOMContentLoaded", () => {
   const targets = document.querySelectorAll(
     ".about-container, .sobre.reveal, .servicos.reveal, .numeros.reveal, .empresas.reveal, .depoimentos.reveal, .contato.reveal"
@@ -61,32 +54,58 @@ document.addEventListener("DOMContentLoaded", () => {
   targets.forEach(el => observer.observe(el));
 });
 
-function animateNumbers() {
-  const numbers = document.querySelectorAll(".numeros .numero h3");
-  numbers.forEach(num => {
-    const target = +num.textContent.replace(/\D/g, ""); // pega só dígitos
-    let count = 0;
-    const increment = target / 100; // velocidade da contagem
-    const interval = setInterval(() => {
-      count += increment;
-      if (count >= target) {
-        num.textContent = target + (num.textContent.includes("K") ? "K+" : num.textContent.includes("%") ? "%" : "");
-        clearInterval(interval);
-      } else {
-        num.textContent = Math.floor(count);
-      }
-    }, 20);
-  });
+// Função de contagem sequencial
+function animateCount(el, target, callback) {
+  let count = 0;
+  const increment = target / 100;
+  const interval = setInterval(() => {
+    count += increment;
+    if (count >= target) {
+      clearInterval(interval);
+      el.textContent = target; // mantém valor final visível
+      const h3 = el.closest("h3");
+      h3.classList.add("finished"); // aplica pulse
+      h3.style.opacity = 1;
+      // mostra o texto logo depois
+      const p = h3.nextElementSibling;
+      if (p) p.classList.add("show");
+      if (callback) callback();
+    } else {
+      el.textContent = Math.floor(count);
+      const h3 = el.closest("h3");
+      h3.style.opacity = 1; // aparece durante a contagem
+    }
+  }, 20);
 }
 
+function startSequentialCount() {
+  const counters = document.querySelectorAll(".count");
+  let i = 0;
+
+  function next() {
+    if (i < counters.length) {
+      const el = counters[i];
+      const target = +el.dataset.target;
+      animateCount(el, target, () => {
+        i++;
+        next();
+      });
+    }
+  }
+
+  next();
+}
+
+// dispara apenas quando o bloco .numeros entra na tela
 document.addEventListener("DOMContentLoaded", () => {
   const numeros = document.querySelector(".numeros");
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         numeros.classList.add("animate");
-        animateNumbers();
-        observer.unobserve(numeros);
+        startSequentialCount();
+        observer.unobserve(numeros); // roda só uma vez
       }
     });
   }, { threshold: 0.3 });
@@ -94,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(numeros);
 });
 
+
+// Observer para gráficos circulares
 document.addEventListener("DOMContentLoaded", () => {
   const graficos = document.querySelectorAll(".grafico");
 
@@ -107,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     circle.style.strokeDasharray = circumference;
     circle.style.strokeDashoffset = circumference;
 
-    // anima quando entra na tela
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -122,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
+// Animação dos ventos
 document.addEventListener("DOMContentLoaded", () => {
   const ventos = document.querySelectorAll(".vento");
   setInterval(() => {
@@ -135,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 2000);
 });
 
+// Partículas no fundo
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".particulas");
 
@@ -147,4 +168,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Inicialização do Swiper com autoplay contínuo
+const swiper = new Swiper('.carrossel', {
+  loop: true,              // loop infinito
+  slidesPerView: 5,        // mostra 5 logos em telas grandes
+  spaceBetween: 20,        // espaço entre os logos
+  autoplay: {
+    delay: 0,              // sem pausa entre movimentos
+    disableOnInteraction: false
+  },
+  speed: 3000,             // velocidade da transição (quanto maior, mais suave)
+  pagination: false,       // sem bolinhas
+  navigation: false,       // sem setas
 
+  // Responsividade automática
+  breakpoints: {
+    768: { slidesPerView: 3 }, // tablets
+    480: { slidesPerView: 2 }  // celulares
+  }
+});
