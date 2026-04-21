@@ -38,10 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
+
+        // se for a seção de números, inicia a contagem
+        if (entry.target.classList.contains("numeros")) {
+          startSequentialCount();
+        }
+
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.1, rootMargin: "0px 0px -20% 0px" });
 
   targets.forEach(el => observer.observe(el));
 });
@@ -55,12 +61,11 @@ function animateCount(el, target, callback) {
   const increment = target / 100;
 
   const h3 = el.closest("h3");
+  const prefix = h3.querySelector(".prefix");
+  const suffix = h3.querySelector(".suffix");
 
-const prefix = h3.querySelector(".prefix");
-const suffix = h3.querySelector(".suffix");
-
-if (prefix) prefix.style.opacity = 1;
-if (suffix) suffix.style.opacity = 1;
+  if (prefix) prefix.style.opacity = 1;
+  if (suffix) suffix.style.opacity = 1;
 
   const interval = setInterval(() => {
     count += increment;
@@ -70,7 +75,6 @@ if (suffix) suffix.style.opacity = 1;
 
       el.textContent = target;
 
-      const h3 = el.closest("h3");
       h3.classList.add("finished");
 
       const p = h3.nextElementSibling;
@@ -103,26 +107,6 @@ function startSequentialCount() {
 }
 
 
-// ativa números quando entra na tela
-document.addEventListener("DOMContentLoaded", () => {
-  const numeros = document.querySelector(".numeros");
-
-  if (!numeros) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        numeros.classList.add("animate");
-        startSequentialCount();
-        observer.unobserve(numeros);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  observer.observe(numeros);
-});
-
-
 // =========================
 // GRÁFICOS CIRCULARES
 // =========================
@@ -130,34 +114,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const graficos = document.querySelectorAll(".grafico");
 
   graficos.forEach(grafico => {
-    const percent = grafico.dataset.percent;
-    const circle = grafico.querySelector(".progress");
-    const radius = circle.r.baseVal.value;
+    const percent = grafico.getAttribute("data-percent");
+    const progress = grafico.querySelector(".progress");
+    const radius = progress.getAttribute("r");
     const circumference = 2 * Math.PI * radius;
 
+    progress.style.strokeDasharray = circumference;
+    progress.style.strokeDashoffset = circumference;
+
+    // calcula offset com base no percentual
     const offset = circumference - (percent / 100) * circumference;
 
-    circle.style.strokeDasharray = circumference;
-    circle.style.strokeDashoffset = circumference;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          circle.style.strokeDashoffset = offset;
-          grafico.classList.add("animate");
-          observer.unobserve(grafico);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(grafico);
+    // força reflow para permitir transição
+    setTimeout(() => {
+      progress.style.transition = "stroke-dashoffset 1.5s ease";
+      progress.style.strokeDashoffset = offset;
+    }, 200);
   });
 });
 
 
+
 // =========================
 // SWIPER (CARROSSEL)
- // =========================
+// =========================
 const swiper = new Swiper('.carrossel', {
   loop: true,
   slidesPerView: 5,
@@ -173,7 +153,10 @@ const swiper = new Swiper('.carrossel', {
   navigation: false,
 
   breakpoints: {
+    1200: { slidesPerView: 5 },
+    1024: { slidesPerView: 4 },
     768: { slidesPerView: 3 },
-    480: { slidesPerView: 2 }
+    480: { slidesPerView: 2 },
+    0: { slidesPerView: 1 }
   }
 });
