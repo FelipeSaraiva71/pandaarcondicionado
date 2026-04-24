@@ -237,6 +237,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top; /* garante melhor enquadramento */
   opacity: 0.5;
   z-index: 0;
 }
@@ -358,12 +359,12 @@ body {
 
 /* LISTA */
 .hero-list {
-   margin-left: 100px;
+  margin-left: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1px;
   list-style: none;
-  padding: 00;
+  padding: 0;
 }
 
 /* PADRÃO (mobile-first) */
@@ -381,6 +382,8 @@ body {
     justify-content: center;
     text-align: center;
     padding: 20px;
+    height: auto; /* deixa altura flexível */
+    min-height: 90vh;
   }
 
   .hero-container {
@@ -401,7 +404,8 @@ body {
   }
 
   .btn-whatsapp-hero {
-    margin: 60px auto 0; /* centralizado */
+    margin: 40px auto 0; /* centralizado */
+    padding: 12px 40px;
   }
 
   .hero-logo {
@@ -417,6 +421,8 @@ body {
     justify-content: center;
     text-align: center;
     padding: 30px;
+    height: auto;
+    min-height: 85vh;
   }
 
   .hero-container {
@@ -427,7 +433,7 @@ body {
 
   .hero h1 {
     font-size: 2.6rem;
-    margin-top: -20px;
+    margin-top: -10px;
   }
 
   .hero-list {
@@ -436,7 +442,7 @@ body {
   }
 
   .btn-whatsapp-hero {
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     padding: 15px 60px;
   }
 
@@ -445,9 +451,40 @@ body {
   }
 }
 
+/* Ajuste para telas médias (ex: 1024px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .hero {
+    height: auto;
+    min-height: 85vh;
+    padding: 40px 20px;
+  }
+
+  .btn-whatsapp-hero {
+    margin: 30px auto 0;
+    padding: 15px 60px;
+    display: block;
+  }
+
+  .hero-logo {
+    margin: 0 auto 20px;
+    width: 70%;
+  }
+
+  .hero h1 {
+    margin: 0 auto 20px;
+    text-align: center;
+    font-size: 2.8rem;
+  }
+
+  .hero-list {
+    margin: 20px auto 0;
+    text-align: center;
+    gap: 20px;
+  }
+}
 
 /* Desktop: aplica recuo lateral */
-@media (min-width: 901px) {
+@media (min-width: 1201px) {
   .hero-logo { margin-left: 95px; }
   .hero h1 { margin-left: 95px; }
   .hero-list { margin-left: 100px; }
@@ -664,7 +701,7 @@ body {
 .btn-cta {
   display: inline-block;
   margin-top: 80px; /* reduzido para mobile */
-  width: 350px;
+  width: 300px;
   padding: 12px 18px;
 
   border: 2px solid #00c2ff;
@@ -699,26 +736,47 @@ body {
   }
 }
 
-/* MOBILE */
+/* MOBILE EXTRA AJUSTADO */
 @media (max-width: 480px) {
   #sobre {
-    padding: 40px 15px;
+    padding: 30px 10px; /* reduz ainda mais o padding */
+    margin: 40px auto;  /* menos espaço externo */
+    gap: 40px;          /* reduz o espaçamento entre colunas */
   }
 
   #sobre h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;  /* menor título */
+    letter-spacing: 1px;
   }
 
   #sobre p {
-    font-size: 1rem;
+    font-size: 0.9rem;  /* texto mais compacto */
+    line-height: 1.4;
   }
 
   .sobre-img {
-    max-width: 300px;
+    max-width: 250px;   /* imagem menor */
   }
 
   .icon img {
-    width: 60px;
+    width: 50px;        /* ícones menores */
+  }
+
+  .sobre-list {
+    gap: 8px;           /* menos espaço entre itens */
+    margin-bottom: 30px;
+  }
+
+  .sobre-list li {
+    font-size: 0.9rem;  /* texto da lista menor */
+  }
+
+  .btn-cta {
+    width: 100%;        /* botão ocupa largura total */
+    max-width: 240px;
+    margin-top: 40px;   /* menos espaço acima */
+    font-size: 0.85rem;
+    padding: 10px 16px;
   }
 }
 
@@ -1005,7 +1063,6 @@ body {
   }
 }
 
-
 .marco {
   text-align: center;
   flex: 1;
@@ -1074,6 +1131,11 @@ body {
     padding: 0 20px;
   }
 
+  #numeros {
+    min-height: 300px; /* garante altura mínima */
+    display: block;
+  }
+
   #numeros .sobre-img {
     margin: 0 auto 20px auto;
   }
@@ -1093,10 +1155,15 @@ body {
     padding: 0 20px;
   }
 
- 
-
   .marco {
     margin: 30px 0;
+  }
+
+  /* Força visibilidade dos ícones e textos em mobile */
+  #numeros .icon,
+  .marco p {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -1236,8 +1303,8 @@ body {
   }
 
   .carrossel img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     padding: 6px;
   }
 }
@@ -1304,10 +1371,27 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.link {
-  color: rgba(255, 0, 0, 0.527);
+.depoimento {
+  position: relative; /* necessário para o absolute funcionar dentro */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 50px;
+  border-radius: 12px;
+  transition: 0.3s;
+  text-align: left;
 }
 
+.depoimento .link {
+  position: absolute;
+  bottom: 15px;   /* distância do fundo */
+  right: 20px;    /* distância da lateral direita */
+  font-size: 0.9rem;
+  color: rgba(255, 0, 0, 0.7);
+  text-decoration: none;
+  text-decoration: underline;
+}
 
 /* RESPONSIVO GRID */
 @media (max-width: 900px) {

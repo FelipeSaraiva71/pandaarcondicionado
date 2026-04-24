@@ -30,6 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // OBSERVER GLOBAL (REVEAL ÚNICO)
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
+  // Ativa hero e header imediatamente ao carregar
+  const hero = document.querySelector(".hero");
+  const header = document.querySelector(".header");
+
+  if (hero) hero.classList.add("active");
+  if (header) header.classList.add("active");
+
+  // Seções que entram com animação ao scroll
   const targets = document.querySelectorAll(
     ".reveal, .about-container, .servicos, .numeros, .empresas, .depoimentos, .contato"
   );
@@ -39,17 +47,27 @@ document.addEventListener("DOMContentLoaded", () => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
 
-        // se for a seção de números, inicia a contagem
+        // Se for a seção de números, inicia a contagem
         if (entry.target.classList.contains("numeros")) {
           startSequentialCount();
         }
 
+        // Para seções internas, só anima uma vez
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: "0px 0px -20% 0px" });
+  }, { threshold: 0, rootMargin: "0px" }); // Ajuste para telas menores
 
   targets.forEach(el => observer.observe(el));
+
+  // Fallback: garante que em telas pequenas os números não fiquem invisíveis
+  if (window.innerWidth < 768) {
+    const numeros = document.querySelector("#numeros");
+    if (numeros) {
+      numeros.classList.add("animate");
+      startSequentialCount();
+    }
+  }
 });
 
 
