@@ -16,14 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
+  const links = document.querySelectorAll('.menu a');
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
       menu.classList.toggle('active');
       toggle.classList.toggle('open');
     });
+
+    // 🔥 fecha menu ao clicar em qualquer link
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        toggle.classList.remove('open');
+      });
+    });
   }
 });
+
 
 
 // =========================
@@ -54,13 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   targets.forEach(el => observer.observe(el));
 
   // 🔥 fallback inteligente (mobile / edge cases)
-  setTimeout(() => {
-    const numeros = document.querySelector("#numeros");
 
-    if (numeros && !numeros.classList.contains("counted")) {
-      startSequentialCount();
-    }
-  }, 1000);
 });
 
 
