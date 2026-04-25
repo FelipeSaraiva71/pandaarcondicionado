@@ -1787,18 +1787,4 @@ main {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-
-* {
-  outline: 1px solid red;
-}
-
-
- .contato {
-  background: red !important;
-}
-
-.footer {
-  background: blue !important;
-}
-
  
