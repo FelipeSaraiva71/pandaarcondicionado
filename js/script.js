@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0, rootMargin: "0px" }); // Ajuste para telas menores
+  }, { threshold: 0.3}); // Ajuste para telas menores
 
   targets.forEach(el => observer.observe(el));
 
