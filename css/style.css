@@ -19,18 +19,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-/* =========================
-   BODY
-========================= */
-body {
-  font-family: Arial, sans-serif;
-  background: var(--bg-dark);
-  color: var(--text);
-  padding-top: 70px;
-  position: relative;
-}
-
+ 
 /* =========================
    HEADER
 ========================= */
@@ -226,7 +215,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 40px 60px;
+  padding: 40px 20px;
   color: #fff;
 }
 
@@ -615,12 +604,11 @@ body {
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 100px;
+  gap: 60px;
   align-items: center;
-
   padding: 80px 20px; /* reduzido para mobile */
   max-width: 1350px;
-  margin: 80px auto;
+  margin: 60px auto;
 }
 
 /* TEXTO */
@@ -795,7 +783,6 @@ body {
   position: relative;
   overflow: hidden;
   padding: 80px 20px; /* reduzido para mobile */
-  min-height: 100vh;
   color: #e5e7eb;
 }
 
@@ -1525,15 +1512,12 @@ body {
 ========================= */
 
 .contato {
-
-  
   background: #020617;
-  margin-top: 80px;
   color: #e5e7eb;
-  padding: 10px 20px; /* mais equilibrado com outras seções */
+  padding:60px 20px 20px;
   text-align: center;
+  margin-bottom: 0;
 }
-
 
 /* TÍTULO */
 .contato h2 {
@@ -1566,7 +1550,7 @@ body {
 .contato-list {
   list-style: none;
   padding: 0;
-  margin: 0 auto 50px;
+  margin: 0 auto 10px;
   max-width: 600px;
 }
 
@@ -1588,7 +1572,7 @@ body {
 
 /* BOTÃO */
 .contato .btn {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   display: inline-block;
   background: linear-gradient(135deg, #00d4ff, #0ea5e9);
   color: #001f3f;
@@ -1606,6 +1590,10 @@ body {
   box-shadow: 0 0 25px rgba(0,212,255,0.7);
 }
 
+.contato-list {
+  margin-bottom: 20px;
+}
+
 /* ANIMAÇÃO */
 .contato.reveal {
   opacity: 0;
@@ -1617,6 +1605,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 
 /* =========================
@@ -1647,7 +1636,9 @@ body {
     width: 100%;
     max-width: 280px;
   }
-}/* =========================
+}
+
+/* =========================
    ANIMAÇÕES
 ========================= */
 
@@ -1765,17 +1756,48 @@ body {
 /* =========================
    FUNDO GLOBAL (CORRIGIDO)
 ========================= */
-
-/* overlay sutil (melhorado) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
- 
-
-  z-index: -1;
-  pointer-events: none;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ocupa toda a altura da tela */
+  font-family: Arial, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+}
+
+main {
+  flex: 1;              /* ocupa todo o espaço entre header e footer */
+  padding-top: 70px;    /* compensa o header fixo */
+}
+
+.footer {
+  margin-top: 0;
+  color: #e5e7eb;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+
+* {
+  outline: 1px solid red;
+}
+
+
+ .contato {
+  background: red !important;
+}
+
+.footer {
+  background: blue !important;
+}
+
 
  
