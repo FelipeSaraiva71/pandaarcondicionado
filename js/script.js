@@ -105,7 +105,12 @@ function animateCount(el, target, callback) {
   }, 20);
 }
 
+let started = false;
+
 function startSequentialCount() {
+  if (started) return;
+  started = true;
+
   const counters = document.querySelectorAll(".count");
   let i = 0;
 
