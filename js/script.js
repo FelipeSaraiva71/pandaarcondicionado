@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.target.classList.add("animate");
 
         // Se for a seção de números, inicia a contagem
-        if (entry.target.classList.contains("numeros")) {
+        if (entry.target.id === "numeros") {
           startSequentialCount();
         }
 
