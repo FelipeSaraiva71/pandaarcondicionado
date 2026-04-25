@@ -30,14 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // OBSERVER GLOBAL (REVEAL ÚNICO)
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
-  // Ativa hero e header imediatamente ao carregar
-  const hero = document.querySelector(".hero");
-  const header = document.querySelector(".header");
 
-  if (hero) hero.classList.add("active");
-  if (header) header.classList.add("active");
-
-  // Seções que entram com animação ao scroll
   const targets = document.querySelectorAll(
     ".reveal, .about-container, .servicos, .numeros, .empresas, .depoimentos, .contato"
   );
@@ -45,29 +38,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+
         entry.target.classList.add("animate");
 
-        // Se for a seção de números, inicia a contagem
+        // 🔥 inicia contagem UMA ÚNICA VEZ
         if (entry.target.id === "numeros") {
           startSequentialCount();
         }
 
-        // Para seções internas, só anima uma vez
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3}); // Ajuste para telas menores
+  }, { threshold: 0.3 });
 
   targets.forEach(el => observer.observe(el));
 
-  // Fallback: garante que em telas pequenas os números não fiquem invisíveis
-  if (window.innerWidth < 768) {
+  // 🔥 fallback inteligente (mobile / edge cases)
+  setTimeout(() => {
     const numeros = document.querySelector("#numeros");
-    if (numeros) {
-      numeros.classList.add("animate");
+
+    if (numeros && !numeros.classList.contains("counted")) {
       startSequentialCount();
     }
-  }
+  }, 1000);
 });
 
 
@@ -105,11 +98,16 @@ function animateCount(el, target, callback) {
   }, 20);
 }
 
-let started = false;
 
+// =========================
+// CONTROLE DEFINITIVO (ANTI-REPETIÇÃO)
+// =========================
 function startSequentialCount() {
-  if (started) return;
-  started = true;
+  const section = document.querySelector("#numeros");
+
+  // 🚫 trava execução duplicada
+  if (section.classList.contains("counted")) return;
+  section.classList.add("counted");
 
   const counters = document.querySelectorAll(".count");
   let i = 0;
@@ -145,17 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
     progress.style.strokeDasharray = circumference;
     progress.style.strokeDashoffset = circumference;
 
-    // calcula offset com base no percentual
     const offset = circumference - (percent / 100) * circumference;
 
-    // força reflow para permitir transição
     setTimeout(() => {
       progress.style.transition = "stroke-dashoffset 1.5s ease";
       progress.style.strokeDashoffset = offset;
     }, 200);
   });
 });
-
 
 
 // =========================
