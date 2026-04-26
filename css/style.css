@@ -628,6 +628,7 @@
 
 #sobre h2::after {
   content: "";
+  display: block;
   width: 60px;
   height: 3px;
   background: linear-gradient(90deg, #00c2ff, #0077ff);
@@ -1506,7 +1507,6 @@
     font-size: 0.85rem;
   }
 }
-
 /* =========================
    SEÇÃO CONTATO
 ========================= */
@@ -1523,7 +1523,7 @@
 .contato h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #00c2ff; /* padronizado com outras seções */
+  color: #00c2ff;
   position: relative;
 }
 
@@ -1550,7 +1550,7 @@
 .contato-list {
   list-style: none;
   padding: 0;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   max-width: 600px;
 }
 
@@ -1564,15 +1564,36 @@
   gap: 10px;
 }
 
-/* ÍCONES */
-.contato-list .icon {
-  font-size: 1.5rem;
-  color: #00d4ff;
+/* Links especiais (WhatsApp, Instagram, Endereço) */
+.contato-list li.social a {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.contato-list li.social a svg {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover animado em texto e ícone */
+.contato-list li.social a:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.contato-list li.social a:hover svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px currentColor);
 }
 
 /* BOTÃO */
 .contato .btn {
-  margin-bottom: 0px;
   display: inline-block;
   background: linear-gradient(135deg, #00d4ff, #0ea5e9);
   color: #001f3f;
@@ -1590,10 +1611,6 @@
   box-shadow: 0 0 25px rgba(0,212,255,0.7);
 }
 
-.contato-list {
-  margin-bottom: 20px;
-}
-
 /* ANIMAÇÃO */
 .contato.reveal {
   opacity: 0;
@@ -1606,11 +1623,22 @@
   transform: translateY(0);
 }
 
-
-
 /* =========================
    RESPONSIVO
 ========================= */
+
+/* WhatsApp e Instagram lado a lado em telas grandes */
+@media (min-width: 768px) {
+  .contato-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contato-list li.social {
+    margin: 0 20px;
+  }
+}
 
 @media (max-width: 768px) {
   .contato {

@@ -10,7 +10,7 @@ O layout foi pensado para ser moderno, responsivo e com animações suaves que v
 - **Hero Section** com logo, título animado e botão de contato via WhatsApp
 - **Sobre**: apresentação institucional com destaque para experiência e diferenciais
 - **Serviços**: cards interativos com hover e botão CTA
-- **Números**: contadores animados e timeline visual
+- **Resultados**: contadores animados e timeline visual
 - **Empresas**: carrossel de logos com animação em cascata
 - **Depoimentos**: grid responsivo com cards estilizados
 - **Contato**: lista de informações e botão CTA com destaque
@@ -38,7 +38,12 @@ index.html
 - **Hover effects** em botões e cards para maior interatividade
 
 ## 📌 Objetivo
-Fornecer uma presença digital profissional para a empresa Panda Ar-Condicionado, destacando seus serviços e facilitando o contato com clientes.
+Fornecer uma presença digital profissional para a empresa **Panda Ar-Condicionado**, destacando seus serviços e facilitando o contato com clientes.
+
+## 📡 Deploy
+O site está hospedado no **HostGator**.  
+Acesse em: **[]**  
+
 
 ## 📞 Contato
 Para mais informações, acesse a seção **Contato** do site ou entre em contato diretamente via WhatsApp.
@@ -46,4 +51,3 @@ Para mais informações, acesse a seção **Contato** do site ou entre em contat
 ---
 
 👨‍💻 Desenvolvido por: **Felipe Saraiva**
-
