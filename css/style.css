@@ -395,6 +395,8 @@
   .btn-whatsapp-hero {
     margin: 40px auto 0; /* centralizado */
     padding: 12px 40px;
+    max-width: 250px;
+    text-align: center;
   }
 
   .hero-logo {
@@ -434,6 +436,7 @@
     margin: 30px auto 0;
     padding: 15px 60px;
   }
+  
 
   .hero-logo {
     width: 80%;
@@ -452,11 +455,16 @@
     margin: 30px auto 0;
     padding: 15px 60px;
     display: block;
+    max-width: 280px;
+    text-align: center;
   }
 
+  
+
   .hero-logo {
-    margin: 0 auto 20px;
+    margin: 0 80px 20px;
     width: 70%;
+    
   }
 
   .hero h1 {
