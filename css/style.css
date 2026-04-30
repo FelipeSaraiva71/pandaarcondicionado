@@ -1220,19 +1220,56 @@
   line-height: 1.6;
 }
 
-/* GRID (mantido como "carrossel" visual) */
+
+/* CONTAINER */
 .carrossel {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* FADE LATERAL (EFEITO NETFLIX) */
+.carrossel::before,
+.carrossel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carrossel::before {
+  left: 0;
+  background: linear-gradient(to right, #020617, transparent);
+}
+
+.carrossel::after {
+  right: 0;
+  background: linear-gradient(to left, #020617, transparent);
+}
+
+/* WRAPPER */
+.carrossel .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  transition-timing-function: linear !important;
+  width: max-content;
+}
+
+/* SLIDES */
+.carrossel .swiper-slide {
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+  flex-shrink: 0;
 }
 
 /* LOGOS */
-.carrossel img {
+.carrossel .swiper-slide img {
   width: 110px;
   height: 110px;
   object-fit: contain;
@@ -1240,68 +1277,33 @@
   background: #fff;
   padding: 10px;
 
-  opacity: 0;
-  transform: translateY(30px) scale(0.9);
-
-  transition: all 0.4s ease;
-  will-change: transform, opacity; /* PERFORMANCE */
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* HOVER */
-.carrossel img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+.carrossel .swiper-slide img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* ANIMAÇÃO */
-.empresas.animate .carrossel img {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* delay em cascata */
-.empresas.animate .carrossel img:nth-child(1) { transition-delay: 0.1s; }
-.empresas.animate .carrossel img:nth-child(2) { transition-delay: 0.2s; }
-.empresas.animate .carrossel img:nth-child(3) { transition-delay: 0.3s; }
-.empresas.animate .carrossel img:nth-child(4) { transition-delay: 0.4s; }
-.empresas.animate .carrossel img:nth-child(5) { transition-delay: 0.5s; }
-
-/* =========================
-   RESPONSIVO
-========================= */
-
+/* RESPONSIVO */
 @media (max-width: 768px) {
-
-  .empresas {
-    padding: 80px 20px;
+  .carrossel::before,
+  .carrossel::after {
+    width: 60px;
   }
 
-  .empresas h2 {
-    font-size: 2rem;
-  }
-
-  .empresas p {
-    font-size: 1.05rem;
-  }
-
-  .carrossel img {
+  .carrossel .swiper-slide img {
     width: 90px;
     height: 90px;
   }
 }
 
 @media (max-width: 480px) {
-
-  .carrossel {
-    gap: 20px;
-  }
-
-  .carrossel img {
-    width: 100px;
-    height: 100px;
-    padding: 6px;
+  .carrossel .swiper-slide img {
+    width: 75px;
+    height: 75px;
   }
 }
 /* =========================

@@ -160,25 +160,25 @@ document.addEventListener("DOMContentLoaded", () => {
 // =========================
 // SWIPER (CARROSSEL)
 // =========================
-const swiper = new Swiper('.carrossel', {
-  loop: true,
-  slidesPerView: 5,
-  spaceBetween: 20,
+document.addEventListener('DOMContentLoaded', () => {
+  new Swiper('.carrossel', {
+    loop: true,
 
-  autoplay: {
-    delay: 0,
-    disableOnInteraction: false
-  },
+    slidesPerView: 'auto',
+    spaceBetween: 30,
 
-  speed: 3000,
-  pagination: false,
-  navigation: false,
+    speed: 6000,
 
-  breakpoints: {
-    1200: { slidesPerView: 5 },
-    1024: { slidesPerView: 4 },
-    768: { slidesPerView: 3 },
-    480: { slidesPerView: 2 },
-    0: { slidesPerView: 1 }
-  }
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
+
+    allowTouchMove: false,
+
+    // 🔥 ESSENCIAL PARA NÃO TRAVAR
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+  });
 });
